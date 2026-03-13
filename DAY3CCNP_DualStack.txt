@@ -5,6 +5,98 @@ https://github.com/ggenergg/RST-DualStackRouting
 rm -rf /etc/udev/rule (pindot tab)/70 (pindot tab)
 
 
+Day3 Network Engineer: Job Interview Questions for L1/L2 NOC-MSP postions.
+3.1 Interpret the components of routing table:
+A routing is a database/fib (forward information base) that is used by routing devices, path to take to go to remote networks.
+linux: netstat -rn 
+windows: route print
+cisco: show ip route
+
+3.1.a Routing protocol code: exclusive on Cisco,Juniper,Fortinet,Palo Alto
+Mr.Bodds = Mpls, Rip, Bgp, Ospf, D(eigrp),Default S*tatic, StaticRouting
+admin distances:
+rip - 120, bgp -20e/200i, ospf - 110, eigrp -90, stat,def - 1
+
+
+3.1.b Prefix: A network Prefix is a Network Route:
+show ip route connected | inc C
+
+3.1.c Network mask: Is a portion of the ip address that separates the Host and NetworkID:
+the IP address of a PC is: 192.168.10.101/27, what is the NetworkAddress: 0,32,64,96 
+the IP address of a PC is: 192.168.10.55/28, what is the NetworkAddress: 0,16,32,48 
+the IP address of a PC is: 192.168.10.43/29, what is the NetworkAddress: 0,8,16,24
+[review the rivan fingering]
+
+3.1.d Next hop: Is the IP address of an Ingress router:
+1st ip address of a router, you go out of.
+c:\>tracert www.x-art.com
+
+Tracing route to www.x-art.com [104.17.155.91]
+over a maximum of 30 hops:
+
+  1     1 ms    <1 ms    <1 ms  172.22.224.254
+  2     2 ms     1 ms     1 ms  192.168.10.1
+  3     6 ms     4 ms     4 ms  119.93.1.0.static.pldt.net [119.93.1.0]
+  4     6 ms     5 ms     5 ms  122.2.181.253.static.pldt.net [122.2.181.253]
+  5     6 ms     6 ms     6 ms  210.213.130.69.static.pldt.net [210.213.130.69]
+  6     5 ms     5 ms     5 ms  117.58.222.183
+  7     5 ms     5 ms     7 ms  104.17.155.91
+
+
+3.1.e Administrative distance: BUMBAY na Interviewer:
+BGP = 20e, 200i, rip = 120, eigrp = 90, OSPF = 110, ISIS = 115, static route = 1
+
+3.1.f Metric: used in routing for Cost and Distance: "how much"
+OSPF = bandwidth, RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
+
+3.1.g Gateway of last resort: aka "default Gateway" is a catch all Route for unknown Networks
+                              parang: GMG: "google mo gago", if NONE: no internet.
+
+3.2 Determine how a router makes a forwarding decision by default:
+
+3.2.a Longest prefix match
+3.2.b Administrative distance
+3.2.c Routing protocol metric
+
+3.3 Configure and verify IPv4 and IPv6 static routing
+3.3.a Default route:  S* [1/0] 0.0.0.0/0 via _(next hop host IP)_
+3.3.b Network route: D[90/15000] or O[110/20] or B[20/120] or S[1/0]
+3.3.c Host route:  S [1/0] 192.168.1.35/32 via _(next hop host IP)_
+3.3.d Floating static: Additionally defined static route as backup.
+
+3.4 Configure and verify single area OSPFv2
+3.4.a Neighbor adjacencies
+3.4.b Point-to-point
+3.4.c Broadcast (DR/BDR election)
+3.4.d Router ID
+
+
+
+
+###### give IP address/pri/secondary (floating static) default GW to S1 and S2:
+@@S1
+config t
+int e1/0
+ no shut
+ ip add 192.168.1.133 255.255.255.224
+ do bp
+!These are floating Default Static routes with redundancy
+ ip route 0.0.0.0 0.0.0.0 192.168.1.129 1
+ ip route 0.0.0.0 0.0.0.0 192.168.1.130 5
+ do sh ip route static
+@@S2
+config t
+int e1/0
+ no shut
+ ip add 10.2.2.133 255.255.255.0
+ do bp
+ ip route 0.0.0.0 0.0.0.0 10.2.2.2 1
+ ip route 0.0.0.0 0.0.0.0 10.2.2.1 10
+ do sh ip route static
+
+!Try to ping with each other...
+
+
 @@@ CONFIGURE RSTHAYUP IN FULL DUAL STACK (means configure in both IPv4 and IPv6).
 
 D1:
@@ -3875,4 +3967,5 @@ show ip sla configuration
 
 
 ######################################################			
+
 
