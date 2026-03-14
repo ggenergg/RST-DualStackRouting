@@ -1171,7 +1171,7 @@ R1 pa rin:
 config t
 router bgp 1
   address-family ipv6 unicast
-   redistribute ospf 6 match internal external 1 external 2
+   redistribute ospf 6 match internal external 1 external 2 include-connected
 
 
 !!!puntanan yung kadulu-duluhan which is R4, dapat tagos ang ping b55::1
