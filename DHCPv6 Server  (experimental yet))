@@ -1,0 +1,24 @@
+@DHCPv6 Server
+conf t
+ipv6 unicast-routing
+ipv6 dhcp pool STATEFULDHCP-vlan10
+ address prefix 2001:db8:10:1::/64
+ dns-server 2001:4860:4860::8888
+ domain-name MGMT.COM
+ ! sip-server ipv6 2001:db8::50
+ exit
+ !
+interface vlan 10
+ description MGMTVLAN
+ ipv6 address 2001:db8:10:1::1/64
+ ipv6 dhcp server STATEFULDHCP-vlan10
+ ipv6 nd managed-config-flag
+ Ipv6 nd other-config-flag
+ no shutdown
+ End
+
+!@Client
+Conf t
+ Int e0/0
+   Ipv6 add dhcp
+   End
