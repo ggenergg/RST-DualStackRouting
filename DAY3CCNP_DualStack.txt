@@ -5,7 +5,7 @@ https://github.com/ggenergg/RST-DualStackRouting
 rm -rf /etc/udev/rule (pindot tab)/70 (pindot tab)
 
 
-Network Engineer: Job Interview Questions for L1/L2 NOC-MSP postions.
+Network Engineer: Job Interview Questions for L1/L2 NOC-MSP postions. (Revisit some basics)
 3.1 Interpret the components of routing table:
 A routing is a database/fib (forward information base) that is used by routing devices, path to take to go to remote networks.
 linux: netstat -rn 
@@ -47,7 +47,7 @@ over a maximum of 30 hops:
 BGP = 20e, 200i, rip = 120, eigrp = 90, OSPF = 110, ISIS = 115, static route = 1
 
 3.1.f Metric: used in routing for Cost and Distance: "how much"
-OSPF = bandwidth, RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
+OSPF = Cost (based sa bandwidth), RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
 
 3.1.g Gateway of last resort: aka "default Gateway" is a catch all Route for unknown Networks
                               parang: GMG: "google mo gago", if NONE: no internet.
@@ -65,10 +65,10 @@ OSPF = bandwidth, RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
 3.3.d Floating static: Additionally defined static route as backup.
 
 3.4 Configure and verify single area OSPFv2
-3.4.a Neighbor adjacencies
-3.4.b Point-to-point
-3.4.c Broadcast (DR/BDR election)
-3.4.d Router ID
+3.4.a Neighbor adjacencies (Send HELLO Packets, when matched via Area and Subnet nagiging adjacent neighbors)
+3.4.b Point-to-point (Direct link, just in-between them at walang election)
+3.4.c Broadcast (DR/BDR/DROTHER election based sa Priority or RouterID)
+3.4.d Router ID (typically matching sa Loopback IP for unique identifier)
 
 
 
@@ -94,7 +94,7 @@ int e1/0
  ip route 0.0.0.0 0.0.0.0 10.2.2.1 10
  do sh ip route static
 
-!Try to ping with each other...
+!Challenge yourself: Try to ping with each other...
 
 
 @@@ CONFIGURE RSTHAYUP IN FULL DUAL STACK (means configure in both IPv4 and IPv6).
@@ -182,6 +182,12 @@ no logging console
 no ip domain-lookup
 _____________ ____ _____ ____ _________ 	!make this as secondary root
 end
+
+Int Range ______, ______
+  switchport trunk encap Dot1Q
+  switchport mode trunk
+  exit
+
 
 !verify if VLANS are propagating
 @a1,a2,d2: 
