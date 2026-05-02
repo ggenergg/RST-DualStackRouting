@@ -1447,7 +1447,7 @@ EX  FEC0:2::2/128 [170/332800]
 EX  FEC0:3::3/128 [170/332800]
 
 
-!!!ping 2001:4860:4860::8888   ---> D1 lang ang makaka-ping, wala pa sa P1/P2
+!!!ping 8:8:8:8::8888   ---> D1 lang ang makaka-ping, wala pa sa P1/P2
 
 
 !!! so far routes... B pasok sa O... O pasok sa D... wala pang STATIC/Default Route sa P1/P2
