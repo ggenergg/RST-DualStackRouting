@@ -44,10 +44,10 @@ over a maximum of 30 hops:
 
 
 3.1.e Administrative distance: BUMBAY na Interviewer:
-BGP = 20e, 200i, rip = 120, eigrp = 90, OSPF = 110, ISIS = 115, static route = 1
+BGP = 20e, 200i, rip = 120, eigrp = 90, OSPF = 110, ISIS = 115, static route = 1   (lowered AD, much prefered)
 
 3.1.f Metric: used in routing for Cost and Distance: "how much"
-OSPF = bandwidth, RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
+OSPF = Cost (based sa bandwidth), RIP = Hopcount, EIGRP = BW+Delay, BGP = Path Attributes
 
 3.1.g Gateway of last resort: aka "default Gateway" is a catch all Route for unknown Networks
                               parang: GMG: "google mo gago", if NONE: no internet.
@@ -182,6 +182,12 @@ no logging console
 no ip domain-lookup
 spanning-tree vlan 1-100 root secondary
 end
+
+Int Range e0/0-3, e1/2-3
+  switchport trunk encap Dot1Q
+  switchport mode trunk
+  exit
+
 
 !verify if VLANS are propagating
 @a1,a2,d2: 
