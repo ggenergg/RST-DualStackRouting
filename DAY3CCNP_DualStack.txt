@@ -863,11 +863,11 @@ B:2:4:B::5      4           45      10       9       13    0    0 00:03:09      
 
 !#Test connectivity from R1. Dapat mag ping lahat, lalo na yung Google ipv6.
 !R1:
-ping 2001:4860:4860::8888
+ping 8:8:8:8::8888
 
-R1#ping 2001:4860:4860::8888
+R1#ping 8:8:8:8::8888
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 2001:4860:4860::8888, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to 8:8:8:8::8888, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 
@@ -949,7 +949,7 @@ B   B22::1/128 [20/0]
 	ping b44::1
 	ping b33::1
 	ping b22::1
-	ping 2001:4860:4860::8888
+	ping 2001:4860:4860::8844
 	ping 8:8:8:8::8888		!if hindi ma-ping ito, you can troubleshoot it if you are a real CCNP candidate :)
 
 ############################################################################
@@ -1183,7 +1183,7 @@ router bgp 1
 
 !!!puntanan yung kadulu-duluhan which is R4, dapat tagos ang ping b55::1
 !!! sr6 ospf kay R4 --->  andami na routes w especially OE2 compare sa kanina na 5 OI lang
-!!! ping and traceroute 2001:4860:4860::8888
+!!! ping and traceroute ping 8:8:8:8::8888
   
  ####################################################################################################
 ~~~~~~~~~~~~~~~~~~~~~~~CONFIGURE INTERNAL NETWORK  IPV6 ADDRESSING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1394,7 +1394,7 @@ D   FEC0::11:0/122 [90/409600]
 
 ##############################TRy This!!!###########################################################
 
-P2#ping 2001:4860:4860::8888 
+P2#ping 8:8:8:8::8888
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 2001:4860:4860::8888, timeout is 2 seconds:
 UUUUU
@@ -1467,13 +1467,13 @@ EX  FEC0:3::3/128 [170/332800]
 		ipv6 route ::/0 10:2:1:12::2
 		end
 
-ping 2001:4860:4860::8888
+ping 8:8:8:8::8888
 ping 8.8.8.8
 
 
-P1#ping 2001:4860:4860::8888
+P1#ping 8:8:8:8::8888
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 2001:4860:4860::8888, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to  8:8:8:8::8888, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/2 ms
 P1#ping 8.8.8.8
