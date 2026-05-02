@@ -22,9 +22,9 @@ rip - 120, bgp -20e/200i, ospf - 110, eigrp -90, stat,def - 1
 show ip route connected | inc C
 
 3.1.c Network mask: Is a portion of the ip address that separates the Host and NetworkID:
-the IP address of a PC is: 192.168.10.101/27, what is the NetworkAddress: 0,32,64,96 
-the IP address of a PC is: 192.168.10.55/28, what is the NetworkAddress: 0,16,32,48 
-the IP address of a PC is: 192.168.10.43/29, what is the NetworkAddress: 0,8,16,24
+the IP address of a PC is: 192.168.10.101/27, what is the NetworkAddress: 0,32,64,96,128 
+the IP address of a PC is: 192.168.10.55/28, what is the NetworkAddress: 0,16,32,48,64
+the IP address of a PC is: 192.168.10.43/29, what is the NetworkAddress: 0,8,16,24,32
 [review the rivan fingering]
 
 3.1.d Next hop: Is the IP address of an Ingress router:
