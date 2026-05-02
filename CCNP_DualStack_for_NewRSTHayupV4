@@ -1183,7 +1183,7 @@ router bgp 1
 
 !!!puntanan yung kadulu-duluhan which is R4, dapat tagos ang ping b55::1
 !!! sr6 ospf kay R4 --->  andami na routes especially OE2 compare sa kanina na 5 OI lang
-!!! ping and traceroute 2001:4860:4860::8888
+!!! ping and traceroute 8:8:8:8::8888
   
  ####################################################################################################
 ~~~~~~~~~~~~~~~~~~~~~~~CONFIGURE INTERNAL NETWORK  IPV6 ADDRESSING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
