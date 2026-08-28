@@ -131,7 +131,7 @@ _____ ___ 				!assign e0/0 via vlan 10
 
 
 A2:
-_____ ___ 				!assign e1/0 via vlan 10
+_____ ___ 				!assign e1/0 via vlan 20
  __________ ____ ______ 
  _________ ______ ____ __
 
@@ -672,7 +672,7 @@ IPV6 ADDRESSING FOR THE ISP'S		(We can bypass all of these addressing configs fo
 			end
 
 			
-@ISP2		!!!!!(We can bypass all of these addressing configs for the new RSTv4)!!!!!
+@ISP2		!!!!!(DO NOT BYPASS THIS, CONFIGURE MANUALLY)!!!!!
 	config t
 		____ ______________
 		int e0/2
@@ -1104,7 +1104,7 @@ B   B22::1/128 [20/0]
 
 
 ####################################################################################################
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!TUNNELING!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!! 6 to 4 TUNNELING !!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 !!!! i-reference si 2026::34:2/122 sa R4, IPv6 nya ito sa Tunnel nya.
 
