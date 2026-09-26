@@ -186,7 +186,7 @@ spanning-tree vlan 1-100 root secondary
 Int Range e0/0-3, e1/2-3
   switchport trunk encap Dot1Q
   switchport mode trunk
-  exit
+ end
 
 
 !verify if VLANS are propagating
