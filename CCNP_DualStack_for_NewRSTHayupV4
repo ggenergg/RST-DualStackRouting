@@ -113,8 +113,8 @@ end
 
 D2:
 CONFIG T
-ip dhcp excluded-add 10.2.2.1 10.2.1.199
-ip dhcp excluded-add 10.2.2.250 10.2.1.254
+ip dhcp excluded-add 10.2.2.1 10.2.2.199
+ip dhcp excluded-add 10.2.2.250 10.2.2.254
 !
 ip dhcp pool vlan20
   network 10.2.2.0 255.255.255.0
