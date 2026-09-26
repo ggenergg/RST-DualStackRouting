@@ -181,7 +181,7 @@ config t
 no logging console
 no ip domain-lookup
 spanning-tree vlan 1-100 root secondary
-end
+
 
 Int Range e0/0-3, e1/2-3
   switchport trunk encap Dot1Q
