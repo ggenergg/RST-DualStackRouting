@@ -134,7 +134,7 @@ A2:
 config t
 int e1/0
  switchport mode access
- switchport access vlan 10
+ switchport access vlan 20
 
 
 p1:
