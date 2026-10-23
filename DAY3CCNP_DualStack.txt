@@ -113,12 +113,12 @@ end
 
 D2:
 CONFIG T
-ip dhcp excluded-add 10.2.1.1 10.2.1.199
-ip dhcp excluded-add 10.2.1.250 10.2.1.254
+ip dhcp excluded-add 10.2.2.1 10.2.2.199
+ip dhcp excluded-add 10.2.2.250 10.2.2.254
 !
-ip dhcp pool vlan10
-  network 10.2.1.0 255.255.255.0
-  default-router 10.2.1.254
+ip dhcp pool vlan20
+  network 10.2.2.0 255.255.255.0
+  default-router 10.2.2.254
 end
 !
 
@@ -152,7 +152,7 @@ int e1/0
 do sh ip int br | ex una
 
 Interface                  IP-Address      OK? Method Status                Protocol
-Ethernet1/0                10.2.1.201      YES DHCP   up                    up
+Ethernet1/0                10.2.2.200      YES DHCP   up                    up
 
 !ulitin pa if wala pa, minsan mejo matagal DHCP states nya dahil kay DORA
 
@@ -590,7 +590,7 @@ end
 @@static default routing in p2:
 p2:
 config t
-ip route 0.0.0.0 0.0.0.0 10.2.1.2
+ip route 0.0.0.0 0.0.0.0 10.2.2.1
 do ping 8.8.8.8
 end
 !
@@ -1381,7 +1381,7 @@ D   FEC0::11:0/122 [90/409600]
 	ipv6 unicast-routing
 	ipv6 route ::/0 10:2:1:12::2
 	int e1/0
-		ipv6 address 10:2:1:12::/64 eui-64
+		ipv6 address 10:2:2:12::/64 eui-64
 		end
 	bp6
 	!wait few secs. and see to it na yung mac ginawang ipv6-ish, get it then ping kay P1
@@ -1464,7 +1464,7 @@ EX  FEC0:3::3/128 [170/332800]
 		!!! ni-route lang kay ipv6 ni VLAN 10, bp6 kay D1 para mahanap.
 @P2
 	conf t
-		ipv6 route ::/0 10:2:1:12::2
+		____ _____ ____ ____________			!!! i-stub route lang kay ipv6 ni VLAN 20.
 		end
 
 ping 8:8:8:8::8888
